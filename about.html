@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | 01 Dental Clinic</title>
+  <meta name="description" content="Γνωρίστε τη φιλοσοφία του 01 Dental Clinic, με έμφαση στη βιομιμητική προσέγγιση, τον ψηφιακό σχεδιασμό και τη σύγχρονη αισθητική οδοντιατρική." />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400&family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #000;
+      --text: #fff;
+      --font: 'Josefin Sans', sans-serif;
+      --body-font: 'Jost', sans-serif;
+    }
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+    }
+    body { overflow-x: hidden; }
+    .wrapper {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      background: #000;
+    }
+    .top {
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: clamp(2rem, 7vh, 5rem);
+      gap: clamp(0.3rem, 1vh, 0.7rem);
+      background: var(--bg);
+    }
+    .logo-img {
+      width: clamp(115px, 22vw, 250px);
+      height: auto;
+      display: block;
+    }
+    nav {
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: clamp(1.2rem, 4vh, 3rem) clamp(1.2rem, 5vw, 5rem) clamp(0.8rem, 2vh, 1.5rem);
+      background: var(--bg);
+      position: relative;
+    }
+    .nav-item { position: relative; }
+    nav a, .nav-trigger {
+      color: rgba(255,255,255,0.58);
+      text-decoration: none;
+      font-family: var(--font);
+      font-size: clamp(0.6rem, 1.2vw, 1rem);
+      letter-spacing: 0.15em;
+      font-weight: 100;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: color 0.25s ease, opacity 0.25s ease;
+      display: block;
+    }
+    nav a:hover, .nav-trigger:hover { color: rgba(255,255,255,0.82); opacity: 1; }
+    nav a.active, .nav-trigger.active { color: #fff; opacity: 1; }
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 0.8rem);
+      left: 0;
+      display: none;
+      flex-direction: column;
+      gap: clamp(0.5rem, 1.5vh, 1rem);
+      z-index: 30;
+      background: var(--bg);
+      padding: 0.5rem 0;
+    }
+    .dropdown.open { display: flex; }
+    .dropdown a {
+      font-size: clamp(0.55rem, 1.1vw, 0.9rem);
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+      opacity: 0.7;
+    }
+    .dropdown a.active { opacity: 1; color: #fff; }
+    .page-content {
+      flex: 1;
+      padding: clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+      background: #000;
+    }
+    .panel-content {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    .about-content { max-width: 600px; }
+    .about-label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(0.55rem, 1vw, 0.75rem);
+      font-weight: 100;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
+    }
+    .about-content {
+      max-width: 760px;
+      margin: 0;
+    }
+    .about-tagline {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(1.15rem, 4.1vw, 2.4rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      line-height: 1.08;
+      margin-bottom: clamp(1.25rem, 3vh, 2rem);
+    }
+    .about-intro, .panel-content p {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+      font-weight: 300;
+      line-height: 1.9;
+      letter-spacing: 0.03em;
+      opacity: 0.85;
+      margin-bottom: clamp(0.6rem, 1.5vh, 1rem);
+    }
+    .panel-content h2, .panel-content h3 {
+      font-family: 'Jost', sans-serif;
+      text-transform: uppercase;
+    }
+    .panel-content h2 {
+      font-size: clamp(0.95rem, 2vw, 1.6rem);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      margin: clamp(1rem, 3vh, 2rem) 0 clamp(0.5rem, 1.5vh, 1rem);
+    }
+    .panel-content h3 {
+      font-size: clamp(0.85rem, 1.6vw, 1.25rem);
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      margin: clamp(0.8rem, 2vh, 1.5rem) 0 clamp(0.4rem, 1vh, 0.8rem);
+    }
+    .panel-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.18);
+      margin: clamp(1.3rem, 3vh, 2rem) 0;
+    }
+    .about-gallery-section {
+      margin-top: clamp(1.8rem, 4vh, 3rem);
+    }
+    .about-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(0.28rem, 1vw, 0.55rem);
+    }
+    .about-gallery-item {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255,255,255,0.03);
+    }
+    .about-gallery-item img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      filter: grayscale(100%);
+    }
+    .about-footer {
+      margin-top: clamp(1.7rem, 4vh, 3rem);
+      padding-top: 0;
+      border-top: 0;
+      text-align: center;
+    }
+    .about-footer p {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      opacity: 0.92;
+      margin-bottom: 0.3rem;
+    }
+    .about-footer p:first-child {
+      font-size: clamp(1.05rem, 2vw, 1.55rem);
+    }
+    .about-footer p:last-child {
+      font-size: clamp(0.82rem, 1.35vw, 1rem);
+      opacity: 0.78;
+    }
+    .bottom-bar {
+      z-index: 10;
+      background: var(--bg);
+      display: flex;
+      justify-content: flex-end;
+      padding: clamp(0.6rem, 1.5vh, 1.2rem) clamp(1rem, 3vw, 2.5rem);
+    }
+    .ask-btn {
+      color: rgba(255,255,255,0.58);
+      text-decoration: none;
+      font-family: var(--font);
+      font-size: clamp(0.6rem, 1.2vw, 1rem);
+      letter-spacing: 0.15em;
+      font-weight: 100;
+      text-transform: uppercase;
+      opacity: 0.58;
+      transition: color 0.25s ease, opacity 0.25s ease;
+    }
+    .ask-btn:hover { color: rgba(255,255,255,0.82); opacity: 1; }
+    @media (min-width: 900px) {
+      .top { padding-top: clamp(0.9rem, 3.6vh, 2.5rem); }
+      nav { padding: clamp(0.65rem, 2vh, 1.35rem) clamp(1.2rem, 5vw, 5rem) clamp(0.45rem, 1.1vh, 0.8rem); }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="top">
+    <a href="index.html" aria-label="01 Dental Clinic home">
+      <img class="logo-img" src="Untitled design (20).png" alt="01 Dental Clinic" />
+    </a>
+  </div>
+
+  <nav>
+    <div class="nav-item">
+      <a href="about.html" class="active">ABOUT</a>
+    </div>
+
+    <div class="nav-item">
+      <button class="nav-trigger" id="nav-treatments" onclick="toggleDropdown()">TREATMENTS</button>
+      <div class="dropdown" id="treatments-dropdown">
+        <a href="invisalign.html">INVISALIGN ALIGN</a>
+        <a href="opseis-porselanis.html">LUMINEERS VENEERS</a>
+        <a href="leukansi-dontion.html">WHITENING</a>
+        <a href="emfitevmata-dontion.html">IMPLANTS</a>
+        <a href="stefanes-gefyres-zirkonias.html">ZIRCONIA CROWNS</a>
+        <a href="opseis-ritinis-bonding.html">COMPOSITE VENEERS</a>
+        <a href="keramika-entheta-epentheta.html">INLAYS ONLAYS</a>
+        <a href="sfragismata-kai-prolipsi-teridonas.html">SEALANTS FILLINGS</a>
+        <a href="stomatiki-xeirourgiki.html">ORAL SURGERY</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a href="contact.html">CONTACT</a>
+    </div>
+    <div class="nav-item">
+      <a href="cases.html">CASES</a>
+    </div>
+    <div class="nav-item">
+      <a href="request.html">REQUEST</a>
+    </div>
+  </nav>
+
+  <main class="page-content">
+    <div class="panel-content about-content">
+      <div class="about-tagline">Precision Dentistry. Naturally.</div>
+
+      <div class="panel-divider"></div>
+
+      <p class="about-intro">Στο OI DENTAL CLINIC, η προσέγγιση βασίζεται στην επιστημονική ακρίβεια, τον ψηφιακό σχεδιασμό και τον σεβασμό στη φυσική δομή των δοντιών.<br>Δημιουργούνται αποτελέσματα που δείχνουν φυσικά και διαρκούν.<br>Κάθε θεραπεία είναι εξατομικευμένη.<br>Κάθε χαμόγελο μοναδικό.</p>
+
+      <div class="panel-divider"></div>
+
+      <h3>ΒΙΟΜΙΜΗΤΙΚΗ ΟΔΟΝΤΙΑΤΡΙΚΗ</h3>
+      <p class="about-intro">Διατηρείται η μέγιστη δυνατή ποσότητα υγιούς οδοντικού ιστού.<br>Οι αποκαταστάσεις λειτουργούν όπως τα φυσικά δόντια.<br>Φυσικό αποτέλεσμα.<br>Ελάχιστη παρέμβαση.<br>Μακροχρόνια αντοχή.</p>
+
+      <div class="panel-divider"></div>
+
+      <h3>ΨΗΦΙΑΚΟΣ ΣΧΕΔΙΑΣΜΟΣ</h3>
+      <p class="about-intro">Χρησιμοποιείται σύγχρονη ψηφιακή τεχνολογία για ακριβή διάγνωση, σχεδιασμό και κατασκευή.<br>Το αποτέλεσμα είναι γνωστό πριν ξεκινήσει η θεραπεία.</p>
+
+      <div class="panel-divider"></div>
+
+      <h3>ΕΛΑΧΙΣΤΗ ΠΑΡΕΜΒΑΣΗ</h3>
+      <p class="about-intro">Επεμβαίνουμε μόνο όταν είναι απαραίτητο και με τον πιο συντηρητικό τρόπο.</p>
+
+      <div class="panel-divider"></div>
+
+      <h3>ΧΡΟΝΟΣ</h3>
+      <p class="about-intro">Δίνεται ο απαραίτητος χρόνος για σωστή διάγνωση, λεπτομερή σχεδιασμό και προσεγμένη θεραπεία.</p>
+
+      <div class="panel-divider"></div>
+
+      <h3>ΦΥΣΙΚΟ ΑΡΜΟΝΙΚΟ ΑΠΟΤΕΛΕΣΜΑ</h3>
+      <p class="about-intro">Το αποτέλεσμα εναρμονίζεται με το πρόσωπο.<br>Υποστηρίζει τη λειτουργία, την αισθητική και την αυτοπεποίθηση.</p>
+
+      <div class="panel-divider"></div>
+
+      <h3>PRIVATE CLINICAL CARE</h3>
+      <p class="about-intro">Το ιατρείο λειτουργεί με περιορισμένο αριθμό ασθενών ανά ημέρα.<br>Εξασφαλίζεται η μέγιστη δυνατή φροντίδα, με τον απαραίτητο χρόνο για κάθε περίπτωση.</p>
+
+      <div class="about-gallery-section">
+        <div class="about-gallery-grid">
+          <div class="about-gallery-item">
+            <img src="image0.jpeg" alt="Dr Vasileios Chatziporotokalis" />
+          </div>
+          <div class="about-gallery-item">
+            <img src="iatrio%205.jpg" alt="Reception area of the clinic" />
+          </div>
+          <div class="about-gallery-item">
+            <img src="iatrio%201.jpg" alt="Treatment room detail" />
+          </div>
+          <div class="about-gallery-item">
+            <img src="iatrio%203.jpg" alt="Minimal corner detail of the clinic" />
+          </div>
+          <div class="about-gallery-item">
+            <img src="iatrio%202.jpg" alt="Orchid detail in the waiting area" />
+          </div>
+          <div class="about-gallery-item">
+            <img src="iatrio%204.jpg" alt="Desk detail of the clinic" />
+          </div>
+        </div>
+      </div>
+
+      <div class="about-footer">
+        <p>Dr Vasileios Chatziportokalis</p>
+        <p>DDS, NYU</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+  let dropdownOpen = false;
+  function toggleDropdown() {
+    dropdownOpen = !dropdownOpen;
+    document.getElementById('treatments-dropdown').classList.toggle('open', dropdownOpen);
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-item')) {
+      dropdownOpen = false;
+      document.getElementById('treatments-dropdown').classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
+

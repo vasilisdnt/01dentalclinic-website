@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | 01 Dental Clinic</title>
+  <meta name="description" content="Επικοινωνήστε με το 01 Dental Clinic για πληροφορίες, αξιολόγηση και προγραμματισμό της επίσκεψής σας." />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400&family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #000;
+      --text: #fff;
+      --font: 'Josefin Sans', sans-serif;
+      --body-font: 'Jost', sans-serif;
+    }
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+    }
+    body { overflow-x: hidden; }
+    .wrapper {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      background: #000;
+    }
+    .top {
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: clamp(2rem, 7vh, 5rem);
+      background: var(--bg);
+    }
+    .logo-img {
+      width: clamp(115px, 22vw, 250px);
+      height: auto;
+      display: block;
+    }
+    nav {
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: clamp(1.2rem, 4vh, 3rem) clamp(1.2rem, 5vw, 5rem) clamp(0.8rem, 2vh, 1.5rem);
+      background: var(--bg);
+      position: relative;
+    }
+    .nav-item { position: relative; }
+    nav a, .nav-trigger {
+      color: rgba(255,255,255,0.58);
+      text-decoration: none;
+      font-family: var(--font);
+      font-size: clamp(0.6rem, 1.2vw, 1rem);
+      letter-spacing: 0.15em;
+      font-weight: 100;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: color 0.25s ease, opacity 0.25s ease;
+      display: block;
+    }
+    nav a:hover, .nav-trigger:hover { color: rgba(255,255,255,0.82); opacity: 1; }
+    nav a.active, .nav-trigger.active { color: #fff; opacity: 1; }
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 0.8rem);
+      left: 0;
+      display: none;
+      flex-direction: column;
+      gap: clamp(0.5rem, 1.5vh, 1rem);
+      z-index: 30;
+      background: var(--bg);
+      padding: 0.5rem 0;
+    }
+    .dropdown.open { display: flex; }
+    .dropdown a {
+      font-size: clamp(0.55rem, 1.1vw, 0.9rem);
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+      opacity: 0.7;
+    }
+    .page-content {
+      flex: 1;
+      padding: clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+      background: #000;
+    }
+    .panel-content {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    .contact-content { max-width: 600px; }
+    .panel-content h1 {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.8rem, 2vw, 1.75rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+    .panel-content h2, .panel-content h3 {
+      font-family: 'Jost', sans-serif;
+      text-transform: uppercase;
+    }
+    .panel-content h2 {
+      font-size: clamp(0.95rem, 2vw, 1.6rem);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      margin: clamp(1rem, 3vh, 2rem) 0 clamp(0.5rem, 1.5vh, 1rem);
+    }
+    .panel-content h3 {
+      font-size: clamp(0.85rem, 1.6vw, 1.25rem);
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      margin: clamp(0.8rem, 2vh, 1.5rem) 0 clamp(0.4rem, 1vh, 0.8rem);
+    }
+    .map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 0.1em;
+      transition: color 0.2s, border-color 0.2s;
+      margin-bottom: clamp(0.6rem, 1.5vh, 1rem);
+    }
+    .map-link:hover { color: #fff; border-color: rgba(255,255,255,0.6); }
+    .panel-content p {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+      font-weight: 300;
+      line-height: 1.9;
+      letter-spacing: 0.03em;
+      margin-bottom: clamp(0.6rem, 1.5vh, 1rem);
+      opacity: 0.85;
+    }
+    .panel-divider {
+      width: 30px;
+      height: 1px;
+      background: rgba(255,255,255,0.25);
+      margin: clamp(1rem, 3vh, 2rem) 0;
+    }
+    .bottom-bar {
+      z-index: 10;
+      background: var(--bg);
+      display: flex;
+      justify-content: flex-end;
+      padding: clamp(0.6rem, 1.5vh, 1.2rem) clamp(1rem, 3vw, 2.5rem);
+    }
+    .ask-btn {
+      color: rgba(255,255,255,0.58);
+      text-decoration: none;
+      font-family: var(--font);
+      font-size: clamp(0.6rem, 1.2vw, 1rem);
+      letter-spacing: 0.15em;
+      font-weight: 100;
+      text-transform: uppercase;
+      opacity: 0.58;
+      transition: color 0.25s ease, opacity 0.25s ease;
+    }
+    .ask-btn:hover { color: rgba(255,255,255,0.82); opacity: 1; }
+    @media (min-width: 900px) {
+      .top { padding-top: clamp(0.9rem, 3.6vh, 2.5rem); }
+      nav { padding: clamp(0.65rem, 2vh, 1.35rem) clamp(1.2rem, 5vw, 5rem) clamp(0.45rem, 1.1vh, 0.8rem); }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="top">
+    <a href="index.html" aria-label="01 Dental Clinic home">
+      <img class="logo-img" src="Untitled design (20).png" alt="01 Dental Clinic" />
+    </a>
+  </div>
+
+  <nav>
+    <div class="nav-item">
+      <a href="about.html">ABOUT</a>
+    </div>
+    <div class="nav-item">
+      <button class="nav-trigger" id="nav-treatments" onclick="toggleDropdown()">TREATMENTS</button>
+      <div class="dropdown" id="treatments-dropdown">
+        <a href="invisalign.html">INVISALIGN ALIGN</a>
+        <a href="opseis-porselanis.html">LUMINEERS VENEERS</a>
+        <a href="leukansi-dontion.html">WHITENING</a>
+        <a href="emfitevmata-dontion.html">IMPLANTS</a>
+        <a href="stefanes-gefyres-zirkonias.html">ZIRCONIA CROWNS</a>
+        <a href="opseis-ritinis-bonding.html">COMPOSITE VENEERS</a>
+        <a href="keramika-entheta-epentheta.html">INLAYS ONLAYS</a>
+        <a href="sfragismata-kai-prolipsi-teridonas.html">SEALANTS FILLINGS</a>
+        <a href="stomatiki-xeirourgiki.html">ORAL SURGERY</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="contact.html" class="active">CONTACT</a>
+    </div>
+    <div class="nav-item">
+      <a href="cases.html">CASES</a>
+    </div>
+    <div class="nav-item">
+      <a href="request.html">REQUEST</a>
+    </div>
+  </nav>
+
+  <main class="page-content">
+    <div class="panel-content contact-content">
+      <h1>CONTACT</h1>
+      <div class="panel-divider"></div>
+      <h2>Dr. Βασιλειος Χατζηπορτοκαλης</h2>
+      <p>DDS · Bioaesthetic Dentistry · Implantology<br>NYU College of Dentistry — New York</p>
+      <div class="panel-divider"></div>
+      <h3>Βουλα</h3>
+      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Leof.+Vasileos+Pavlou+6,+Voula+166+73,+Greece" target="_blank" rel="noopener">
+        Λεωφ. Βασιλέως Παύλου 6, Βούλα 166 73 ↗
+      </a>
+      <h3>Νικαια</h3>
+      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Papadiamanti+6,+Nikea+184+52,+Greece" target="_blank" rel="noopener">
+        Παπαδιαμάντη 6, Νίκαια 184 52 ↗
+      </a>
+      <div class="panel-divider"></div>
+      <p>+30 213 012 2918</p>
+      <p>info@01dentalclinic.gr</p>
+    </div>
+  </main>
+</div>
+
+<script>
+  let dropdownOpen = false;
+  function toggleDropdown() {
+    dropdownOpen = !dropdownOpen;
+    document.getElementById('treatments-dropdown').classList.toggle('open', dropdownOpen);
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-item')) {
+      dropdownOpen = false;
+      document.getElementById('treatments-dropdown').classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Σφραγισματα και Προληψη Τερηδονας | 01 Dental Clinic</title>
+  <meta name="description" content="Σφραγίσματα δοντιών και θεραπείες πρόληψης τερηδόνας συμβάλλουν στη διατήρηση της στοματικής υγείας, προστατεύοντας τη φυσική δομή και τη λειτουργία των δοντιών." />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400&family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #000;
+      --text: #fff;
+      --font: 'Josefin Sans', sans-serif;
+      --body-font: 'Jost', sans-serif;
+    }
+    html, body { width: 100%; min-height: 100%; background: var(--bg); color: var(--text); font-family: var(--font); }
+    body { overflow-x: hidden; }
+    .wrapper { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; background: #000; }
+    .top { z-index: 10; display: flex; flex-direction: column; align-items: center; padding-top: clamp(2rem, 7vh, 5rem); gap: clamp(0.3rem, 1vh, 0.7rem); background: var(--bg); }
+    .logo-img { width: clamp(115px, 22vw, 250px); height: auto; display: block; }
+    nav { z-index: 20; display: flex; justify-content: space-between; align-items: flex-start; padding: clamp(1.2rem, 4vh, 3rem) clamp(1.2rem, 5vw, 5rem) clamp(0.8rem, 2vh, 1.5rem); background: var(--bg); position: relative; }
+    .nav-item { position: relative; }
+    nav a, .nav-trigger { color: rgba(255,255,255,0.58); text-decoration: none; font-family: var(--font); font-size: clamp(0.6rem, 1.2vw, 1rem); letter-spacing: 0.15em; font-weight: 100; text-transform: uppercase; cursor: pointer; background: none; border: none; padding: 0; transition: color 0.25s ease, opacity 0.25s ease; display: block; }
+    nav a:hover, .nav-trigger:hover { color: rgba(255,255,255,0.82); opacity: 1; }
+    nav a.active, .nav-trigger.active { color: #fff; opacity: 1; }
+    .dropdown { position: absolute; top: calc(100% + 0.8rem); left: 0; display: none; flex-direction: column; gap: clamp(0.5rem, 1.5vh, 1rem); z-index: 30; background: var(--bg); padding: 0.5rem 0; }
+    .dropdown.open { display: flex; }
+    .dropdown a { font-size: clamp(0.55rem, 1.1vw, 0.9rem); letter-spacing: 0.12em; white-space: nowrap; opacity: 0.7; }
+    .dropdown a.active { opacity: 1; color: #fff; }
+    .page-content { flex: 1; padding: clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem); background: #000; }
+    .panel-content { max-width: 1120px; margin: 0 auto; }
+    .panel-content h1 { font-family: 'Jost', sans-serif; font-size: clamp(0.8rem, 2vw, 1.75rem); font-weight: 100; letter-spacing: 0.18em; margin-bottom: clamp(0.8rem, 2vh, 1.5rem); line-height: 1.15; text-transform: uppercase; color: rgba(255,255,255,0.72); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    .panel-content h2 { font-family: 'Jost', sans-serif; font-size: clamp(0.95rem, 2vw, 1.6rem); font-weight: 400; letter-spacing: 0.12em; margin: clamp(1rem, 3vh, 2rem) 0 clamp(0.5rem, 1.5vh, 1rem); text-transform: uppercase; }
+    .panel-content h3 { font-family: 'Jost', sans-serif; font-size: clamp(0.85rem, 1.6vw, 1.25rem); font-weight: 400; letter-spacing: 0.1em; margin: clamp(0.8rem, 2vh, 1.5rem) 0 clamp(0.4rem, 1vh, 0.8rem); text-transform: uppercase; }
+    .panel-content p { font-family: 'Jost', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.1rem); font-weight: 300; line-height: 1.9; letter-spacing: 0.03em; margin-bottom: clamp(0.6rem, 1.5vh, 1rem); opacity: 0.85; }
+    .panel-content ul { list-style: none; padding: 0; margin-bottom: clamp(0.6rem, 1.5vh, 1rem); }
+    .panel-content ul li { font-family: 'Jost', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.1rem); font-weight: 300; line-height: 1.9; letter-spacing: 0.03em; opacity: 0.85; padding-left: 1rem; }
+    .panel-content ul li::before { content: "— "; opacity: 0.5; }
+    .panel-divider { width: 30px; height: 1px; background: rgba(255,255,255,0.25); margin: clamp(1rem, 3vh, 2rem) 0; }
+    .treatment-carousel { margin: clamp(1.5rem, 4vh, 2.5rem) 0; }
+    .treatment-carousel-track { display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; touch-action: pan-x; }
+    .treatment-carousel-track::-webkit-scrollbar { display: none; }
+    .treatment-carousel-slide { flex: 0 0 100%; width: 100%; scroll-snap-align: start; background: #000; }
+    .treatment-carousel-slide img { display: block; width: 100%; height: clamp(320px, 62vw, 620px); object-fit: cover; object-position: center; background: #000; }
+    @media (min-width: 900px) { .top { padding-top: clamp(0.9rem, 3.6vh, 2.5rem); } nav { padding: clamp(0.65rem, 2vh, 1.35rem) clamp(1.2rem, 5vw, 5rem) clamp(0.45rem, 1.1vh, 0.8rem); } .treatment-carousel-slide img { object-fit: contain; } }
+    .treatment-carousel-dots { display: flex; align-items: center; justify-content: center; gap: 0.55rem; margin-top: clamp(0.9rem, 2vh, 1.2rem); }
+    .treatment-carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.28); transition: background 0.2s ease, transform 0.2s ease; }
+    .treatment-carousel-dot.active { background: #fff; transform: scale(1.15); }
+    .request-btn {
+      display: inline-block;
+      margin-top: clamp(1.2rem, 3vh, 2rem);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(0.9rem, 1.6vw, 1.2rem);
+      font-weight: 100;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .request-btn:hover { color: #fff; }  </style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="top">
+    <a href="index.html" aria-label="01 Dental Clinic home">
+      <img class="logo-img" src="Untitled design (20).png" alt="01 Dental Clinic" />
+    </a>
+  </div>
+  <nav>
+    <div class="nav-item"><a href="about.html">ABOUT</a></div>
+    <div class="nav-item">
+      <button class="nav-trigger active" id="nav-treatments" onclick="toggleDropdown()">TREATMENTS</button>
+      <div class="dropdown" id="treatments-dropdown">
+        <a href="invisalign.html">INVISALIGN ALIGN</a>
+        <a href="opseis-porselanis.html">LUMINEERS VENEERS</a>
+        <a href="leukansi-dontion.html">WHITENING</a>
+        <a href="emfitevmata-dontion.html">IMPLANTS</a>
+        <a href="stefanes-gefyres-zirkonias.html">ZIRCONIA CROWNS</a>
+        <a href="opseis-ritinis-bonding.html">COMPOSITE VENEERS</a>
+        <a href="keramika-entheta-epentheta.html">INLAYS ONLAYS</a>
+        <a href="sfragismata-kai-prolipsi-teridonas.html" class="active">SEALANTS FILLINGS</a>
+        <a href="stomatiki-xeirourgiki.html">ORAL SURGERY</a>
+      </div>
+    </div>
+    <div class="nav-item"><a href="contact.html">CONTACT</a></div>
+    <div class="nav-item"><a href="cases.html">CASES</a></div>
+    <div class="nav-item"><a href="request.html">REQUEST</a></div>
+  </nav>
+  <main class="page-content">
+    <div class="panel-content">
+<h1>Σφραγισματα Προληψη Τερηδονας</h1>
+        <p><em>Αποκαταστάσεις &amp; Sealants</em></p>
+        <div class="panel-divider"></div>
+        <h2>Αποκατασταση Δοντιων</h2>
+        <p>Η αποκατάσταση των δοντιών πραγματοποιείται με σύγχρονα αισθητικά υλικά σύνθετης ρητίνης που προσαρμόζονται στο φυσικό χρώμα του δοντιού. Στόχος είναι η αποκατάσταση της μορφής, της λειτουργίας και της αισθητικής με όσο το δυνατόν πιο συντηρητική προσέγγιση.</p>
+        <h2>Σφραγισματα</h2>
+        <p>Τα σύγχρονα σφραγίσματα επιτρέπουν την αποκατάσταση της τερηδόνας ή μικρών απωλειών οδοντικής ουσίας χωρίς να αλλοιώνεται η φυσική εικόνα του δοντιού.</p>
+        <ul>
+          <li>Φυσική αισθητική εμφάνιση</li>
+          <li>Προστασία της δομής του δοντιού</li>
+          <li>Αποκατάσταση της λειτουργίας της μάσησης</li>
+        </ul>
+        <h2>Προληψη Τερηδονας</h2>
+        <p>Η πρόληψη αποτελεί βασικό μέρος της σύγχρονης οδοντιατρικής, ειδικά σε επιφάνειες που συγκρατούν πιο εύκολα μικρόβια και υπολείμματα τροφών.</p>
+        <h2>Sealants</h2>
+        <p>Τα sealants είναι λεπτές προστατευτικές επικαλύψεις που εφαρμόζονται στις μασητικές επιφάνειες των δοντιών και λειτουργούν ως φραγμός απέναντι στην ανάπτυξη τερηδόνας. Είναι ιδανικά για παιδιά αλλά και για ενήλικες σε επιλεγμένες περιπτώσεις.</p>
+        <ul>
+          <li>Προστασία οπών και σχισμών</li>
+          <li>Μείωση του κινδύνου τερηδόνας</li>
+          <li>Απλή και ανώδυνη διαδικασία</li>
+        </ul>
+        <h2>Συχνες Ερωτησεις</h2>
+        <h3>Τι ειναι τα αισθητικα σφραγισματα;</h3>
+        <p>Είναι αποκαταστάσεις από σύνθετη ρητίνη που ταιριάζουν στο φυσικό χρώμα του δοντιού και χρησιμοποιούνται για την αντιμετώπιση της τερηδόνας ή μικρών φθορών.</p>
+        <h3>Ειναι φυσικο το αποτελεσμα;</h3>
+        <p>Ναι. Τα σύγχρονα υλικά επιτρέπουν αποτέλεσμα που ενσωματώνεται οπτικά στο φυσικό δόντι.</p>
+        <h3>Τι ειναι τα sealants;</h3>
+        <p>Είναι λεπτές προστατευτικές επικαλύψεις που εφαρμόζονται στις μασητικές επιφάνειες για την πρόληψη της τερηδόνας.</p>
+        <h3>Σε ποιους απευθυνονται;</h3>
+        <p>Είναι ιδιαίτερα χρήσιμα στα παιδιά, αλλά μπορούν να εφαρμοστούν και σε ενήλικες όταν υπάρχουν ενδείξεις.</p>
+        <h3>Η διαδικασια ειναι επωδυνη;</h3>
+        <p>Οχι. Η εφαρμογή sealants είναι απλή και ανώδυνη.</p>
+        <h3>Γιατι ειναι σημαντικη η προληψη;</h3>
+        <p>Η πρόληψη μειώνει την ανάγκη για πιο επεμβατικές θεραπείες στο μέλλον και βοηθά στη διατήρηση της φυσικής οδοντικής ουσίας.</p>
+        <div class="panel-divider"></div>
+        <a href="request.html" class="request-btn">REQUEST APPOINTMENT</a>
+    </div>
+  </main>
+</div>
+<script>
+  let dropdownOpen = false;
+  function toggleDropdown() {
+    dropdownOpen = !dropdownOpen;
+    document.getElementById('treatments-dropdown').classList.toggle('open', dropdownOpen);
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-item')) {
+      dropdownOpen = false;
+      document.getElementById('treatments-dropdown').classList.remove('open');
+    }
+  });
+  function initTreatmentCarousels() {
+    document.querySelectorAll('[data-carousel]').forEach(function(carousel) {
+      const track = carousel.querySelector('[data-carousel-track]');
+      const dots = Array.from(carousel.querySelectorAll('.treatment-carousel-dot'));
+      if (!track || dots.length === 0) return;
+      let autoplayTimer = null;
+      function updateDots() {
+        const slideWidth = track.clientWidth || 1;
+        const index = Math.max(0, Math.min(dots.length - 1, Math.round(track.scrollLeft / slideWidth)));
+        dots.forEach(function(dot, dotIndex) { dot.classList.toggle('active', dotIndex === index); });
+      }
+      function getCurrentIndex() {
+        const slideWidth = track.clientWidth || 1;
+        return Math.max(0, Math.min(dots.length - 1, Math.round(track.scrollLeft / slideWidth)));
+      }
+      function stopAutoplay() { if (autoplayTimer) { window.clearInterval(autoplayTimer); autoplayTimer = null; } }
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayTimer = window.setInterval(function() {
+          const nextIndex = (getCurrentIndex() + 1) % dots.length;
+          track.scrollTo({ left: nextIndex * track.clientWidth, behavior: 'smooth' });
+        }, 3000);
+      }
+      track.addEventListener('scroll', updateDots, { passive: true });
+      window.addEventListener('resize', updateDots);
+      updateDots();
+      startAutoplay();
+    });
+  }
+  initTreatmentCarousels();
+</script>
+</body>
+</html>
+

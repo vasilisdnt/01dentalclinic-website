@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>01 Dental Clinic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000;
+      --font: 'Josefin Sans', sans-serif;
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      background: var(--bg);
+      color: #fff;
+      font-family: var(--font);
+      overflow: hidden;
+    }
+
+    .wrapper {
+      width: 100%; height: 100vh;
+      height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(3rem, 10vh, 6rem);
+      opacity: 0;
+      animation: pageFadeIn 1.2s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes pageFadeIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo-img {
+      width: clamp(115px, 22vw, 250px);
+      height: auto;
+      display: block;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(2rem, 5.5vh, 3.5rem);
+    }
+
+    .card-btn {
+      display: block;
+      font-family: var(--font);
+      font-size: clamp(0.7rem, 2vw, 0.95rem);
+      font-weight: 100;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 0.4em;
+      transition: color 0.25s ease, border-color 0.25s ease;
+    }
+    .card-btn:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.75);
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+  <img class="logo-img" src="Untitled design (20).png" alt="01 Dental Clinic" />
+  <div class="buttons">
+    <a href="request.html" class="card-btn">REQUEST APPOINTMENT</a>
+    <a href="contact.html" class="card-btn">CONTACT</a>
+  </div>
+</div>
+
+</body>
+</html>

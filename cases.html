@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cases | 01 Dental Clinic</title>
+  <meta name="description" content="Before and after dental treatment cases from 01 Dental Clinic." />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400&family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #000;
+      --text: #fff;
+      --font: 'Josefin Sans', sans-serif;
+      --body-font: 'Jost', sans-serif;
+    }
+    html, body { width: 100%; min-height: 100%; background: var(--bg); color: var(--text); font-family: var(--font); }
+    body { overflow-x: hidden; }
+    .wrapper { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; background: #000; }
+    .top { z-index: 10; display: flex; flex-direction: column; align-items: center; padding-top: clamp(2rem, 7vh, 5rem); gap: clamp(0.3rem, 1vh, 0.7rem); background: var(--bg); }
+    .logo-img { width: clamp(115px, 22vw, 250px); height: auto; display: block; }
+    nav { z-index: 20; display: flex; justify-content: space-between; align-items: flex-start; padding: clamp(1.2rem, 4vh, 3rem) clamp(1.2rem, 5vw, 5rem) clamp(0.8rem, 2vh, 1.5rem); background: var(--bg); position: relative; }
+    .nav-item { position: relative; }
+    nav a, .nav-trigger { color: rgba(255,255,255,0.58); text-decoration: none; font-family: var(--font); font-size: clamp(0.6rem, 1.2vw, 1rem); letter-spacing: 0.15em; font-weight: 100; text-transform: uppercase; cursor: pointer; background: none; border: none; padding: 0; transition: color 0.25s ease, opacity 0.25s ease; display: block; }
+    nav a:hover, .nav-trigger:hover { color: rgba(255,255,255,0.82); opacity: 1; }
+    nav a.active, .nav-trigger.active { color: #fff; opacity: 1; }
+    .dropdown { position: absolute; top: calc(100% + 0.8rem); left: 0; display: none; flex-direction: column; gap: clamp(0.5rem, 1.5vh, 1rem); z-index: 30; background: var(--bg); padding: 0.5rem 0; }
+    .dropdown.open { display: flex; }
+    .dropdown a { font-size: clamp(0.55rem, 1.1vw, 0.9rem); letter-spacing: 0.12em; white-space: nowrap; opacity: 0.7; }
+    .dropdown a.active { opacity: 1; color: #fff; }
+    .page-content { flex: 1; padding: clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem); background: #000; }
+    .panel-content { max-width: 1120px; margin: 0 auto; }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .cases-stack { display: flex; flex-direction: column; gap: clamp(1.75rem, 5vh, 3rem); }
+    .treatment-carousel-track { display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; touch-action: pan-x; }
+    .treatment-carousel-track::-webkit-scrollbar { display: none; }
+    .treatment-carousel-slide { flex: 0 0 100%; width: 100%; scroll-snap-align: start; background: #000; }
+    .treatment-carousel-slide img { display: block; width: 100%; height: clamp(320px, 48vw, 560px); object-fit: cover; object-position: center 35%; background: #000; }
+    .treatment-carousel-dots { display: flex; align-items: center; justify-content: center; gap: 0.55rem; margin-top: clamp(0.9rem, 2vh, 1.2rem); }
+    .treatment-carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.28); transition: background 0.2s ease, transform 0.2s ease; }
+    .treatment-carousel-dot.active { background: #fff; transform: scale(1.15); }
+    @media (min-width: 900px) {
+      .top { padding-top: clamp(0.9rem, 3.6vh, 2.5rem); }
+      nav { padding: clamp(0.65rem, 2vh, 1.35rem) clamp(1.2rem, 5vw, 5rem) clamp(0.45rem, 1.1vh, 0.8rem); }
+      .treatment-carousel-slide img { object-fit: cover; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="top">
+    <a href="index.html" aria-label="01 Dental Clinic home">
+      <img class="logo-img" src="Untitled design (20).png" alt="01 Dental Clinic" />
+    </a>
+  </div>
+  <nav>
+    <div class="nav-item"><a href="about.html">ABOUT</a></div>
+    <div class="nav-item">
+      <button class="nav-trigger" id="nav-treatments" onclick="toggleDropdown()">TREATMENTS</button>
+      <div class="dropdown" id="treatments-dropdown">
+        <a href="invisalign.html">INVISALIGN ALIGN</a>
+        <a href="opseis-porselanis.html">LUMINEERS VENEERS</a>
+        <a href="leukansi-dontion.html">WHITENING</a>
+        <a href="emfitevmata-dontion.html">IMPLANTS</a>
+        <a href="stefanes-gefyres-zirkonias.html">ZIRCONIA CROWNS</a>
+        <a href="opseis-ritinis-bonding.html">COMPOSITE VENEERS</a>
+        <a href="keramika-entheta-epentheta.html">INLAYS ONLAYS</a>
+        <a href="sfragismata-kai-prolipsi-teridonas.html">SEALANTS FILLINGS</a>
+        <a href="stomatiki-xeirourgiki.html">ORAL SURGERY</a>
+      </div>
+    </div>
+    <div class="nav-item"><a href="contact.html">CONTACT</a></div>
+    <div class="nav-item"><a href="cases.html" class="active">CASES</a></div>
+    <div class="nav-item"><a href="request.html">REQUEST</a></div>
+  </nav>
+  <main class="page-content">
+    <div class="panel-content">
+      <h1 class="sr-only">Cases</h1>
+      <div class="cases-stack">
+        <section class="treatment-carousel" data-carousel aria-label="Aligners case">
+          <div class="treatment-carousel-track" data-carousel-track tabindex="0">
+            <div class="treatment-carousel-slide"><img src="5aabb661-70fe-40e5-afd3-d7d0e868cc0b.jpg" alt="Aligners case cover" /></div>
+            <div class="treatment-carousel-slide"><img src="aligners after.jpg" alt="Aligners result after treatment" /></div>
+            <div class="treatment-carousel-slide"><img src="aligners before.jpg" alt="Aligners before treatment" /></div>
+          </div>
+          <div class="treatment-carousel-dots" aria-hidden="true">
+            <span class="treatment-carousel-dot active"></span>
+            <span class="treatment-carousel-dot"></span>
+            <span class="treatment-carousel-dot"></span>
+          </div>
+        </section>
+
+        <section class="treatment-carousel" data-carousel aria-label="Direct veneers case">
+          <div class="treatment-carousel-track" data-carousel-track tabindex="0">
+            <div class="treatment-carousel-slide"><img src="6DA845BC-4DCB-4454-BB3F-AE82FDF7B09D.PNG" alt="Direct veneers case cover" /></div>
+            <div class="treatment-carousel-slide"><img src="direct veneers after.jpg" alt="Direct veneers result after treatment" /></div>
+            <div class="treatment-carousel-slide"><img src="direct veneers before.JPG" alt="Direct veneers before treatment" /></div>
+          </div>
+          <div class="treatment-carousel-dots" aria-hidden="true">
+            <span class="treatment-carousel-dot active"></span>
+            <span class="treatment-carousel-dot"></span>
+            <span class="treatment-carousel-dot"></span>
+          </div>
+        </section>
+
+        <section class="treatment-carousel" data-carousel aria-label="Porcelain veneers case">
+          <div class="treatment-carousel-track" data-carousel-track tabindex="0">
+            <div class="treatment-carousel-slide"><img src="image0 (2).png" alt="Porcelain veneers case cover" /></div>
+            <div class="treatment-carousel-slide"><img src="forcelain veneers after.jpeg" alt="Porcelain veneers result after treatment" /></div>
+            <div class="treatment-carousel-slide"><img src="forcelain veneers before.jpeg" alt="Porcelain veneers before treatment" /></div>
+          </div>
+          <div class="treatment-carousel-dots" aria-hidden="true">
+            <span class="treatment-carousel-dot active"></span>
+            <span class="treatment-carousel-dot"></span>
+            <span class="treatment-carousel-dot"></span>
+          </div>
+        </section>
+
+        <section class="treatment-carousel" data-carousel aria-label="Whitening case">
+          <div class="treatment-carousel-track" data-carousel-track tabindex="0">
+            <div class="treatment-carousel-slide"><img src="249BC9B3-D7BA-4D81-BADC-AF1A6DF7B6A9 (1).PNG" alt="Whitening case cover" /></div>
+            <div class="treatment-carousel-slide"><img src="whitening after.JPG" alt="Whitening result after treatment" /></div>
+            <div class="treatment-carousel-slide"><img src="whitening before.jpg" alt="Whitening before treatment" /></div>
+          </div>
+          <div class="treatment-carousel-dots" aria-hidden="true">
+            <span class="treatment-carousel-dot active"></span>
+            <span class="treatment-carousel-dot"></span>
+            <span class="treatment-carousel-dot"></span>
+          </div>
+        </section>
+
+        <section class="treatment-carousel" data-carousel aria-label="Implants case">
+          <div class="treatment-carousel-track" data-carousel-track tabindex="0">
+            <div class="treatment-carousel-slide"><img src="image0 (1).png" alt="Implants case cover" /></div>
+            <div class="treatment-carousel-slide"><img src="implants-after.jpg" alt="Implants result after treatment" /></div>
+            <div class="treatment-carousel-slide"><img src="implants-before.jpg" alt="Implants before treatment" /></div>
+          </div>
+          <div class="treatment-carousel-dots" aria-hidden="true">
+            <span class="treatment-carousel-dot active"></span>
+            <span class="treatment-carousel-dot"></span>
+            <span class="treatment-carousel-dot"></span>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+  let dropdownOpen = false;
+  function toggleDropdown() {
+    dropdownOpen = !dropdownOpen;
+    document.getElementById('treatments-dropdown').classList.toggle('open', dropdownOpen);
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-item')) {
+      dropdownOpen = false;
+      document.getElementById('treatments-dropdown').classList.remove('open');
+    }
+  });
+  function initCarousels() {
+    const carousels = Array.from(document.querySelectorAll('[data-carousel]'));
+
+    carousels.forEach(function(carousel) {
+      const track = carousel.querySelector('[data-carousel-track]');
+      const dots = Array.from(carousel.querySelectorAll('.treatment-carousel-dot'));
+      const slides = Array.from(carousel.querySelectorAll('.treatment-carousel-slide'));
+      if (!track || slides.length === 0) return;
+
+      let playing = false;
+
+      function goTo(index, behavior) {
+        track.scrollTo({ left: index * track.clientWidth, behavior: behavior || 'smooth' });
+        dots.forEach(function(dot, i) { dot.classList.toggle('active', i === index); });
+      }
+
+      function playOnce() {
+        if (playing) return;
+        playing = true;
+        setTimeout(function() { goTo(1); }, 80);
+        setTimeout(function() { goTo(2); }, 1600);
+        setTimeout(function() { goTo(0); playing = false; }, 3200);
+      }
+
+      slides[0].style.cursor = 'pointer';
+      slides[0].addEventListener('click', function() { playOnce(); });
+
+      track.addEventListener('scroll', function() {
+        const slideWidth = track.clientWidth || 1;
+        const index = Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / slideWidth)));
+        dots.forEach(function(dot, i) { dot.classList.toggle('active', i === index); });
+      }, { passive: true });
+
+      goTo(0, 'auto');
+    });
+
+    window.addEventListener('resize', function() {
+      carousels.forEach(function(carousel) {
+        const track = carousel.querySelector('[data-carousel-track]');
+        if (track) track.scrollTo({ left: 0, behavior: 'auto' });
+      });
+    });
+  }
+  initCarousels();
+</script>
+</body>
+</html>

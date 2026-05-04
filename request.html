@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request Appointment | 01 Dental Clinic</title>
+  <meta name="description" content="Στείλτε online αίτημα ραντεβού στο 01 Dental Clinic και θα επικοινωνήσουμε μαζί σας για τον προγραμματισμό της επίσκεψής σας." />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400&family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #000;
+      --text: #fff;
+      --font: 'Josefin Sans', sans-serif;
+      --body-font: 'Jost', sans-serif;
+    }
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+    }
+    body { overflow-x: hidden; }
+    .wrapper {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      background: #000;
+    }
+    .top {
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: clamp(2rem, 7vh, 5rem);
+      background: var(--bg);
+    }
+    .logo-img {
+      width: clamp(115px, 22vw, 250px);
+      height: auto;
+      display: block;
+    }
+    nav {
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: clamp(1.2rem, 4vh, 3rem) clamp(1.2rem, 5vw, 5rem) clamp(0.8rem, 2vh, 1.5rem);
+      background: var(--bg);
+      position: relative;
+    }
+    .nav-item { position: relative; }
+    nav a, .nav-trigger {
+      color: rgba(255,255,255,0.58);
+      text-decoration: none;
+      font-family: var(--font);
+      font-size: clamp(0.6rem, 1.2vw, 1rem);
+      letter-spacing: 0.15em;
+      font-weight: 100;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: color 0.25s ease, opacity 0.25s ease;
+      display: block;
+    }
+    nav a:hover, .nav-trigger:hover { color: rgba(255,255,255,0.82); opacity: 1; }
+    nav a.active, .nav-trigger.active { color: #fff; opacity: 1; }
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 0.8rem);
+      left: 0;
+      display: none;
+      flex-direction: column;
+      gap: clamp(0.5rem, 1.5vh, 1rem);
+      z-index: 30;
+      background: var(--bg);
+      padding: 0.5rem 0;
+    }
+    .dropdown.open { display: flex; }
+    .dropdown a {
+      font-size: clamp(0.55rem, 1.1vw, 0.9rem);
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+      opacity: 0.7;
+    }
+    .page-content {
+      flex: 1;
+      padding: clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+      background: #000;
+    }
+    .panel-content {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    .book-content {
+      max-width: 760px;
+    }
+    .book-content h1 {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.95rem, 2.2vw, 1.75rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+    .panel-divider {
+      width: 30px;
+      height: 1px;
+      background: rgba(255,255,255,0.25);
+      margin: clamp(1rem, 3vh, 2rem) 0;
+    }
+    .book-form {
+      margin: clamp(1.2rem, 3vh, 2rem) 0;
+    }
+    .book-field {
+      margin-bottom: clamp(1rem, 2.4vh, 1.4rem);
+    }
+    .book-field input,
+    .book-field select,
+    .book-field textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.38);
+      border-radius: 0;
+      outline: none;
+      box-shadow: none;
+      color: #fff;
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.9rem, 1.45vw, 1.08rem);
+      font-weight: 300;
+      line-height: 1.4;
+      letter-spacing: 0.04em;
+      padding: 0.2rem 0 0.85rem;
+      transition: border-color 0.2s ease, opacity 0.2s ease;
+      -webkit-appearance: none;
+      appearance: none;
+      resize: none;
+    }
+    .book-field textarea {
+      min-height: 4.5rem;
+      padding-top: 0.25rem;
+    }
+    .book-field select { cursor: pointer; }
+    .book-field select option {
+      background: #000;
+      color: #fff;
+    }
+    .book-field input::placeholder,
+    .book-field textarea::placeholder,
+    .book-field select {
+      color: rgba(255,255,255,0.56);
+    }
+    .book-field input:focus,
+    .book-field select:focus,
+    .book-field textarea:focus {
+      border-bottom-color: rgba(255,255,255,0.92);
+    }
+    .book-submit {
+      margin-top: clamp(0.8rem, 2vh, 1.2rem);
+      background: none;
+      border: none;
+      color: #fff;
+      font-family: var(--font);
+      font-size: clamp(0.62rem, 1.15vw, 0.9rem);
+      font-weight: 100;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 0;
+      opacity: 0.78;
+      transition: opacity 0.2s ease;
+    }
+    .book-submit:hover { opacity: 1; }
+    .book-confirmation {
+      margin-top: clamp(1rem, 2.6vh, 1.5rem);
+      opacity: 0;
+      transform: translateY(6px);
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .book-confirmation.visible {
+      opacity: 0.82;
+      transform: translateY(0);
+    }
+    .book-confirmation p,
+    .book-meta p {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+      font-weight: 300;
+      line-height: 1.9;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.35rem;
+      opacity: 0.85;
+    }
+    .bottom-bar {
+      z-index: 10;
+      background: var(--bg);
+      display: flex;
+      justify-content: flex-end;
+      padding: clamp(0.6rem, 1.5vh, 1.2rem) clamp(1rem, 3vw, 2.5rem);
+    }
+    .ask-btn {
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--font);
+      font-size: clamp(0.6rem, 1.2vw, 1rem);
+      letter-spacing: 0.15em;
+      font-weight: 100;
+      text-transform: uppercase;
+      opacity: 1;
+    }
+    @media (min-width: 900px) {
+      .top { padding-top: clamp(0.9rem, 3.6vh, 2.5rem); }
+      nav { padding: clamp(0.65rem, 2vh, 1.35rem) clamp(1.2rem, 5vw, 5rem) clamp(0.45rem, 1.1vh, 0.8rem); }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="top">
+    <a href="index.html" aria-label="01 Dental Clinic home">
+      <img class="logo-img" src="Untitled design (20).png" alt="01 Dental Clinic" />
+    </a>
+  </div>
+
+  <nav>
+    <div class="nav-item">
+      <a href="about.html">ABOUT</a>
+    </div>
+    <div class="nav-item">
+      <button class="nav-trigger" id="nav-treatments" onclick="toggleDropdown()">TREATMENTS</button>
+      <div class="dropdown" id="treatments-dropdown">
+        <a href="invisalign.html">INVISALIGN ALIGN</a>
+        <a href="opseis-porselanis.html">LUMINEERS VENEERS</a>
+        <a href="leukansi-dontion.html">WHITENING</a>
+        <a href="emfitevmata-dontion.html">IMPLANTS</a>
+        <a href="stefanes-gefyres-zirkonias.html">ZIRCONIA CROWNS</a>
+        <a href="opseis-ritinis-bonding.html">COMPOSITE VENEERS</a>
+        <a href="keramika-entheta-epentheta.html">INLAYS ONLAYS</a>
+        <a href="sfragismata-kai-prolipsi-teridonas.html">SEALANTS FILLINGS</a>
+        <a href="stomatiki-xeirourgiki.html">ORAL SURGERY</a>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="contact.html">CONTACT</a>
+    </div>
+    <div class="nav-item">
+      <a href="cases.html">CASES</a>
+    </div>
+    <div class="nav-item">
+      <a href="request.html" class="active">REQUEST</a>
+    </div>
+  </nav>
+
+  <main class="page-content">
+    <div class="panel-content book-content">
+      <h1>REQUEST APPOINTMENT</h1>
+      <div class="panel-divider"></div>
+      <form class="book-form" action="https://formspree.io/f/mjgjdbry" method="POST" target="book-form-target" onsubmit="handleBookSubmit()">
+        <div class="book-field">
+          <input type="text" name="Ονομα" placeholder="Ονομα" required />
+        </div>
+        <div class="book-field">
+          <input type="tel" name="Τηλέφωνο" placeholder="Τηλέφωνο" required />
+        </div>
+        <div class="book-field">
+          <input type="email" name="Email" placeholder="Email" />
+        </div>
+        <div class="book-field">
+          <select name="Θεραπεία">
+            <option value="" selected>Θεραπεία</option>
+            <option value="Invisalign">Invisalign</option>
+            <option value="Implants">Implants</option>
+            <option value="Aesthetic Dentistry">Aesthetic Dentistry</option>
+            <option value="General Consultation">General Consultation</option>
+            <option value="Online Consultation">Online Consultation</option>
+          </select>
+        </div>
+        <div class="book-field">
+          <input type="text" name="Ημερομηνία &amp; Ωρα" placeholder="Ημερομηνία &amp; Ωρα" required />
+        </div>
+        <div class="book-field">
+          <textarea name="Μήνυμα" placeholder="Μήνυμα (προαιρετικό)"></textarea>
+        </div>
+
+        <button class="book-submit" type="submit">REQUEST</button>
+        <div class="book-confirmation" id="book-confirmation">
+          <p>Ευχαριστούμε για το αίτημά σας. Θα επικοινωνήσουμε μαζί σας για τον προγραμματισμό της επίσκεψής σας.</p>
+        </div>
+      </form>
+      <iframe name="book-form-target" title="booking submission target" style="display:none;"></iframe>
+    </div>
+  </main>
+</div>
+
+<script>
+  let dropdownOpen = false;
+  function toggleDropdown() {
+    dropdownOpen = !dropdownOpen;
+    document.getElementById('treatments-dropdown').classList.toggle('open', dropdownOpen);
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-item')) {
+      dropdownOpen = false;
+      document.getElementById('treatments-dropdown').classList.remove('open');
+    }
+  });
+  function handleBookSubmit() {
+    const confirmation = document.getElementById('book-confirmation');
+    if (!confirmation) return;
+    window.setTimeout(function() {
+      confirmation.classList.add('visible');
+    }, 220);
+  }
+</script>
+</body>
+</html>
+
