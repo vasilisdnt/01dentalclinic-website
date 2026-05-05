@@ -68,7 +68,7 @@
       display: block;
     }
     nav a:hover, .nav-trigger:hover { color: rgba(255,255,255,0.82); opacity: 1; }
-    nav a.active, .nav-trigger.active { color: #fff; opacity: 1; }
+    nav a.active, .nav-trigger.active { color: #fff; opacity: 1; font-weight: 400; text-shadow: 0 0 10px rgba(255,255,255,0.4); }
     .dropdown {
       position: absolute;
       top: calc(100% + 0.8rem);
@@ -85,8 +85,9 @@
       font-size: clamp(0.55rem, 1.1vw, 0.9rem);
       letter-spacing: 0.12em;
       white-space: nowrap;
-      opacity: 0.7;
+      opacity: 1;
     }
+    .dropdown a:hover { opacity: 0.65; }
     .page-content {
       flex: 1;
       padding: clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
@@ -176,7 +177,11 @@
       .top { padding-top: clamp(0.9rem, 3.6vh, 2.5rem); }
       nav { padding: clamp(0.65rem, 2vh, 1.35rem) clamp(1.2rem, 5vw, 5rem) clamp(0.45rem, 1.1vh, 0.8rem); }
     }
-  </style>
+    @media (min-width: 900px) and (max-width: 1920px) {
+      .logo-img { width: clamp(90px, 22vw, 170px); }
+      .top { padding-top: clamp(0.45rem, 1.8vh, 1.25rem); }
+      nav { padding: clamp(0.3rem, 1vh, 0.7rem) clamp(1.2rem, 5vw, 5rem) clamp(0.45rem, 1.1vh, 0.8rem); }
+    }  </style>
 </head>
 <body>
 <div class="wrapper">
