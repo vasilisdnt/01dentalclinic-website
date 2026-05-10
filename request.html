@@ -3,8 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Request Appointment | 01 Dental Clinic</title>
-  <meta name="description" content="Στείλτε online αίτημα ραντεβού στο 01 Dental Clinic και θα επικοινωνήσουμε μαζί σας για τον προγραμματισμό της επίσκεψής σας." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+  <title>Request Appointment | OI Dental Clinic</title>
+  <meta name="description" content="Στείλτε online αίτημα ραντεβού στο OI Dental Clinic και θα επικοινωνήσουμε μαζί σας για τον προγραμματισμό της επίσκεψής σας." />
+  <link rel="canonical" href="https://www.01dentalclinic.gr/request.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="OI Dental Clinic" />
+  <meta property="og:locale" content="el_GR" />
+  <meta property="og:url" content="https://www.01dentalclinic.gr/request.html" />
+  <meta property="og:title" content="Request Appointment | OI Dental Clinic" />
+  <meta property="og:description" content="Στείλτε online αίτημα ραντεβού στο OI Dental Clinic και θα επικοινωνήσουμε μαζί σας για τον προγραμματισμό της επίσκεψής σας." />
+  <meta property="og:image" content="https://www.01dentalclinic.gr/logo.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Request Appointment | OI Dental Clinic" />
+  <meta name="twitter:description" content="Στείλτε online αίτημα ραντεβού στο OI Dental Clinic και θα επικοινωνήσουμε μαζί σας για τον προγραμματισμό της επίσκεψής σας." />
+  <meta name="twitter:image" content="https://www.01dentalclinic.gr/logo.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400&family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,13 +35,13 @@
       color: var(--text);
       font-family: var(--font);
     }
-    body { overflow-x: hidden; }
+    body { overflow-x: clip; }
     .wrapper {
       min-height: 100vh;
       min-height: 100svh;
       display: flex;
       flex-direction: column;
-      background: #000;
+      background: #000; padding-bottom: clamp(5.5rem, 10vh, 7.5rem);
     }
     .top {
       z-index: 10;
@@ -36,24 +50,27 @@
       align-items: center;
       padding-top: clamp(2rem, 7vh, 5rem);
       background: var(--bg);
-    }
+      overflow: hidden;    }
     .logo-img {
       width: clamp(115px, 22vw, 250px);
       height: auto;
       display: block;
+      transform: scale(2.08);
+      transform-origin: center center;
+      mix-blend-mode: lighten;
     }
     nav {
       z-index: 20;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding: clamp(1.2rem, 4vh, 3rem) clamp(1.2rem, 5vw, 5rem) clamp(0.8rem, 2vh, 1.5rem);
+      padding: clamp(1.2rem, 4vh, 3rem) clamp(1.2rem, 5vw, 5rem) clamp(2rem, 4vh, 3rem);
       background: var(--bg);
       position: relative;
     }
     .nav-item { position: relative; }
     nav a, .nav-trigger {
-      color: rgba(255,255,255,0.58);
+      color: #fff;
       text-decoration: none;
       font-family: var(--font);
       font-size: clamp(0.6rem, 1.2vw, 1rem);
@@ -68,7 +85,7 @@
       display: block;
     }
     nav a:hover, .nav-trigger:hover { color: rgba(255,255,255,0.82); opacity: 1; }
-    nav a.active, .nav-trigger.active { color: #fff; opacity: 1; }
+    nav a.active, .nav-trigger.active { color: #fff; opacity: 1; text-shadow: 0 0 8px rgba(255,255,255,0.85), 0 0 20px rgba(255,255,255,0.4); }
     .dropdown {
       position: absolute;
       top: calc(100% + 0.8rem);
@@ -78,15 +95,18 @@
       gap: clamp(0.5rem, 1.5vh, 1rem);
       z-index: 30;
       background: var(--bg);
-      padding: 0.5rem 0;
+      padding: 0.5rem 0.8rem;
     }
     .dropdown.open { display: flex; }
     .dropdown a {
       font-size: clamp(0.55rem, 1.1vw, 0.9rem);
       letter-spacing: 0.12em;
       white-space: nowrap;
-      opacity: 0.7;
+      color: #fff;
+      opacity: 1;
     }
+    .dropdown a:hover { color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.85), 0 0 20px rgba(255,255,255,0.4); }
+    .dropdown a.active { color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.85), 0 0 20px rgba(255,255,255,0.4); }
     .page-content {
       flex: 1;
       padding: clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
@@ -100,13 +120,14 @@
       max-width: 760px;
     }
     .book-content h1 {
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(0.95rem, 2.2vw, 1.75rem);
-      font-weight: 300;
-      letter-spacing: 0.08em;
+      font-family: var(--font);
+      font-size: clamp(0.71rem, 1.65vw, 1.31rem);
+      font-weight: 100;
+      letter-spacing: 0.18em;
       margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
       line-height: 1.15;
       text-transform: uppercase;
+      opacity: 1;
     }
     .panel-divider {
       width: 30px;
@@ -126,7 +147,7 @@
       width: 100%;
       background: transparent;
       border: none;
-      border-bottom: 1px solid rgba(255,255,255,0.38);
+      border-bottom: 1px solid rgba(255,255,255,0.15);
       border-radius: 0;
       outline: none;
       box-shadow: none;
@@ -146,15 +167,57 @@
       min-height: 4.5rem;
       padding-top: 0.25rem;
     }
-    .book-field select { cursor: pointer; }
-    .book-field select option {
-      background: #000;
-      color: #fff;
-    }
     .book-field input::placeholder,
-    .book-field textarea::placeholder,
-    .book-field select {
+    .book-field textarea::placeholder {
       color: rgba(255,255,255,0.56);
+    }
+    .custom-select-trigger {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.56);
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.9rem, 1.45vw, 1.08rem);
+      font-weight: 300;
+      line-height: 1.4;
+      letter-spacing: 0.04em;
+      padding: 0.2rem 0 0.85rem;
+      text-align: left;
+      cursor: pointer;
+      display: block;
+      transition: border-color 0.2s ease;
+    }
+    .custom-select-trigger.selected { color: #fff; }
+    .custom-select-trigger:focus { outline: none; border-bottom-color: rgba(255,255,255,0.92); }
+    .custom-select-options {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: auto;
+      width: 62%;
+      background: #000;
+      border-radius: 8px;
+      z-index: 50;
+      display: none;
+      padding: 0.5rem 0;
+    }
+    .custom-select-options.open { display: block; }
+    .custom-select-option {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(0.55rem, 1.1vw, 0.9rem);
+      font-weight: 100;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 1;
+      padding: 0.65rem 1rem;
+      cursor: pointer;
+      transition: color 0.2s ease, text-shadow 0.2s ease, opacity 0.2s ease;
+    }
+    .custom-select-option:hover {
+      color: #fff;
+      text-shadow: 0 0 8px rgba(255,255,255,0.85), 0 0 20px rgba(255,255,255,0.4);
     }
     .book-field input:focus,
     .book-field select:focus,
@@ -167,13 +230,13 @@
       border: none;
       color: #fff;
       font-family: var(--font);
-      font-size: clamp(0.62rem, 1.15vw, 0.9rem);
+      font-size: clamp(0.71rem, 1.65vw, 1.31rem);
       font-weight: 100;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       cursor: pointer;
       padding: 0;
-      opacity: 0.78;
+      opacity: 1;
       transition: opacity 0.2s ease;
     }
     .book-submit:hover { opacity: 1; }
@@ -215,18 +278,54 @@
       text-transform: uppercase;
       opacity: 1;
     }
+    @media (max-width: 768px) {
+      .dropdown { padding-left: 0.8rem; }
+    }
     @media (min-width: 900px) {
       .top { padding-top: clamp(0.9rem, 3.6vh, 2.5rem); }
-      nav { padding: clamp(0.65rem, 2vh, 1.35rem) clamp(1.2rem, 5vw, 5rem) clamp(0.45rem, 1.1vh, 0.8rem); }
+      nav { padding: clamp(0.65rem, 2vh, 1.35rem) clamp(1.2rem, 5vw, 5rem) clamp(2rem, 4vh, 3rem); }
     }
-  </style>
+  
+        .home-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: clamp(5.5rem, 10vh, 7.5rem);
+      background: #000;
+      display: flex;
+      align-items: center;
+      padding: 0 clamp(1.2rem, 3vw, 2.5rem);
+      z-index: 100;
+    }
+    .home-btn {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(0.75rem, 1.4vw, 1.05rem);
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      transition: opacity 0.25s ease;
+    }
+    .home-btn:hover { opacity: 0.55; }
+      @media (max-width: 768px) { .logo-img { width: 145px; } }
+    .site-header { position: sticky; top: 0; left: 0; right: 0; width: 100%; z-index: 50; background: #000; }
+    @media (min-width: 900px) and (max-width: 1920px) {
+      .top { padding-top: clamp(0.4rem, 1.5vh, 1rem); }
+      .logo-img { width: clamp(100px, 16vw, 195px); }
+      nav { padding: clamp(0.3rem, 0.8vh, 0.65rem) clamp(1.2rem, 5vw, 5rem) clamp(0.8rem, 2vh, 1.5rem); }
+    }
+    .treatment-title-block { position: sticky; top: var(--header-h, 0px); background: #000; z-index: 40; padding-bottom: clamp(0.8rem, 2vh, 1.5rem); }
+    .treatment-title-block::before { content: ''; position: absolute; top: calc(-1 * clamp(1.5rem, 5vw, 4rem)); left: -100vw; right: -100vw; bottom: 0; background: #000; z-index: -1; }
+    .treatment-title-block h1 { margin-bottom: 0; }
+    </style>
 </head>
 <body>
 <div class="wrapper">
+  <div class="site-header">
   <div class="top">
-    <a href="index.html" aria-label="01 Dental Clinic home">
-      <img class="logo-img" src="Untitled design (20).png" alt="01 Dental Clinic" />
-    </a>
+    <img class="logo-img" src="logo.jpg" alt="OI Dental Clinic" />
   </div>
 
   <nav>
@@ -234,7 +333,7 @@
       <a href="about.html">ABOUT</a>
     </div>
     <div class="nav-item">
-      <button class="nav-trigger" id="nav-treatments" onclick="toggleDropdown()">TREATMENTS</button>
+      <a href="index.html?back=treatments" class="nav-trigger" id="nav-treatments">TREATMENTS</a>
       <div class="dropdown" id="treatments-dropdown">
         <a href="invisalign.html">INVISALIGN ALIGN</a>
         <a href="opseis-porselanis.html">LUMINEERS VENEERS</a>
@@ -249,15 +348,16 @@
       </div>
     </div>
     <div class="nav-item">
-      <a href="contact.html">CONTACT</a>
+      <a href="index.html?back=cases" class="nav-trigger">CASES</a>
     </div>
     <div class="nav-item">
-      <a href="cases.html">CASES</a>
+      <a href="contact.html">CONTACT</a>
     </div>
     <div class="nav-item">
       <a href="request.html" class="active">REQUEST</a>
     </div>
   </nav>
+  </div>
 
   <main class="page-content">
     <div class="panel-content book-content">
@@ -273,18 +373,19 @@
         <div class="book-field">
           <input type="email" name="Email" placeholder="Email" />
         </div>
-        <div class="book-field">
-          <select name="Θεραπεία">
-            <option value="" selected>Θεραπεία</option>
-            <option value="Invisalign">Invisalign</option>
-            <option value="Implants">Implants</option>
-            <option value="Aesthetic Dentistry">Aesthetic Dentistry</option>
-            <option value="General Consultation">General Consultation</option>
-            <option value="Online Consultation">Online Consultation</option>
-          </select>
+        <div class="book-field" style="position:relative;">
+          <input type="hidden" name="Θεραπεία" id="therapy-val" value="" />
+          <button type="button" class="custom-select-trigger" id="therapy-trigger" onclick="toggleTherapy(event)">Θεραπεία</button>
+          <div class="custom-select-options" id="therapy-options">
+            <div class="custom-select-option" onclick="pickTherapy('Invisalign')">Invisalign</div>
+            <div class="custom-select-option" onclick="pickTherapy('Implants')">Implants</div>
+            <div class="custom-select-option" onclick="pickTherapy('Aesthetic Dentistry')">Aesthetic Dentistry</div>
+            <div class="custom-select-option" onclick="pickTherapy('General Consultation')">General Consultation</div>
+            <div class="custom-select-option" onclick="pickTherapy('Online Consultation')">Online Consultation</div>
+          </div>
         </div>
         <div class="book-field">
-          <input type="text" name="Ημερομηνία &amp; Ωρα" placeholder="Ημερομηνία &amp; Ωρα" required />
+          <input type="text" name="Επιθυμητή Διαθεσιμότητα" placeholder="Επιθυμητή Διαθεσιμότητα" required />
         </div>
         <div class="book-field">
           <textarea name="Μήνυμα" placeholder="Μήνυμα (προαιρετικό)"></textarea>
@@ -312,6 +413,30 @@
       document.getElementById('treatments-dropdown').classList.remove('open');
     }
   });
+  document.addEventListener('DOMContentLoaded', function() {
+    var header = document.querySelector('.site-header');
+    var wrapper = document.querySelector('.wrapper');
+    function syncOffset() { var h = Math.ceil(header.getBoundingClientRect().height); document.documentElement.style.setProperty('--header-h', h + 'px'); }
+    var titleEl = document.querySelector('h1');
+    if (titleEl) { var block = document.createElement('div'); block.className = 'treatment-title-block'; titleEl.parentNode.insertBefore(block, titleEl); block.appendChild(titleEl); }
+    syncOffset();
+    window.addEventListener('resize', syncOffset);
+  });
+  function toggleTherapy(e) {
+    e.stopPropagation();
+    document.getElementById('therapy-options').classList.toggle('open');
+  }
+  function pickTherapy(val) {
+    document.getElementById('therapy-val').value = val;
+    var t = document.getElementById('therapy-trigger');
+    t.textContent = val;
+    t.classList.add('selected');
+    document.getElementById('therapy-options').classList.remove('open');
+  }
+  document.addEventListener('click', function() {
+    var opts = document.getElementById('therapy-options');
+    if (opts) opts.classList.remove('open');
+  });
   function handleBookSubmit() {
     const confirmation = document.getElementById('book-confirmation');
     if (!confirmation) return;
@@ -320,6 +445,5 @@
     }, 220);
   }
 </script>
+<div class="home-bar"><a href="index.html?skip=1" class="home-btn">&lt; OI</a></div>
 </body>
-</html>
-

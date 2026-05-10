@@ -3,8 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Οψεις Πορσελανης | 01 Dental Clinic</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+  <title>Οψεις Πορσελανης | OI Dental Clinic</title>
   <meta name="description" content="Οι όψεις πορσελάνης και τα Lumineers αποτελούν λεπτές κεραμικές αποκαταστάσεις που βελτιώνουν την αισθητική του χαμόγελου με φυσικό και αρμονικό αποτέλεσμα." />
+  <link rel="canonical" href="https://www.01dentalclinic.gr/opseis-porselanis.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="OI Dental Clinic" />
+  <meta property="og:locale" content="el_GR" />
+  <meta property="og:url" content="https://www.01dentalclinic.gr/opseis-porselanis.html" />
+  <meta property="og:title" content="Οψεις Πορσελανης | OI Dental Clinic" />
+  <meta property="og:description" content="Οι όψεις πορσελάνης και τα Lumineers αποτελούν λεπτές κεραμικές αποκαταστάσεις που βελτιώνουν την αισθητική του χαμόγελου με φυσικό και αρμονικό αποτέλεσμα." />
+  <meta property="og:image" content="https://www.01dentalclinic.gr/logo.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Οψεις Πορσελανης | OI Dental Clinic" />
+  <meta name="twitter:description" content="Οι όψεις πορσελάνης και τα Lumineers αποτελούν λεπτές κεραμικές αποκαταστάσεις που βελτιώνουν την αισθητική του χαμόγελου με φυσικό και αρμονικό αποτέλεσμα." />
+  <meta name="twitter:image" content="https://www.01dentalclinic.gr/logo.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400&family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -15,24 +29,25 @@
       --body-font: 'Jost', sans-serif;
     }
     html, body { width: 100%; min-height: 100%; background: var(--bg); color: var(--text); font-family: var(--font); }
-    body { overflow-x: hidden; }
-    .wrapper { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; background: #000; }
-    .top { z-index: 10; display: flex; flex-direction: column; align-items: center; padding-top: clamp(2rem, 7vh, 5rem); gap: clamp(0.3rem, 1vh, 0.7rem); background: var(--bg); }
-    .logo-img { width: clamp(115px, 22vw, 250px); height: auto; display: block; }
-    nav { z-index: 20; display: flex; justify-content: space-between; align-items: flex-start; padding: clamp(1.2rem, 4vh, 3rem) clamp(1.2rem, 5vw, 5rem) clamp(0.8rem, 2vh, 1.5rem); background: var(--bg); position: relative; }
+    body { overflow-x: clip; }
+    .wrapper { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; background: #000; padding-bottom: clamp(5.5rem, 10vh, 7.5rem); }
+    .top { z-index: 10; display: flex; flex-direction: column; align-items: center; padding-top: clamp(2rem, 7vh, 5rem); gap: clamp(0.3rem, 1vh, 0.7rem); background: var(--bg); overflow: hidden; }
+    .logo-img { width: clamp(115px, 22vw, 250px); height: auto; display: block; transform: scale(2.08); transform-origin: center center; mix-blend-mode: lighten; }
+    nav { z-index: 20; display: flex; justify-content: space-between; align-items: flex-start; padding: clamp(1.2rem, 4vh, 3rem) clamp(1.2rem, 5vw, 5rem) clamp(2rem, 4vh, 3rem); background: var(--bg); position: relative; }
     .nav-item { position: relative; }
-    nav a, .nav-trigger { color: rgba(255,255,255,0.58); text-decoration: none; font-family: var(--font); font-size: clamp(0.6rem, 1.2vw, 1rem); letter-spacing: 0.15em; font-weight: 100; text-transform: uppercase; cursor: pointer; background: none; border: none; padding: 0; transition: color 0.25s ease, opacity 0.25s ease; display: block; }
+    nav a, .nav-trigger { color: #fff; text-decoration: none; font-family: var(--font); font-size: clamp(0.6rem, 1.2vw, 1rem); letter-spacing: 0.15em; font-weight: 100; text-transform: uppercase; cursor: pointer; background: none; border: none; padding: 0; transition: color 0.25s ease, opacity 0.25s ease; display: block; }
     nav a:hover, .nav-trigger:hover { color: rgba(255,255,255,0.82); opacity: 1; }
-    nav a.active, .nav-trigger.active { color: #fff; opacity: 1; }
-    .dropdown { position: absolute; top: calc(100% + 0.8rem); left: 0; display: none; flex-direction: column; gap: clamp(0.5rem, 1.5vh, 1rem); z-index: 30; background: var(--bg); padding: 0.5rem 0; }
+    nav a.active, .nav-trigger.active { color: #fff; opacity: 1; text-shadow: 0 0 8px rgba(255,255,255,0.85), 0 0 20px rgba(255,255,255,0.4); }
+    .dropdown { position: absolute; top: calc(100% + 0.8rem); left: 0; display: none; flex-direction: column; gap: clamp(0.5rem, 1.5vh, 1rem); z-index: 30; background: var(--bg); padding: 0.5rem 0.8rem; }
     .dropdown.open { display: flex; }
-    .dropdown a { font-size: clamp(0.55rem, 1.1vw, 0.9rem); letter-spacing: 0.12em; white-space: nowrap; opacity: 0.7; }
-    .dropdown a.active { opacity: 1; color: #fff; }
+    .dropdown a { font-size: clamp(0.55rem, 1.1vw, 0.9rem); letter-spacing: 0.12em; white-space: nowrap; color: #fff; opacity: 1; }
+    .dropdown a:hover { color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.85), 0 0 20px rgba(255,255,255,0.4); }
+    .dropdown a.active { color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.85), 0 0 20px rgba(255,255,255,0.4); }
     .page-content { flex: 1; padding: clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem); background: #000; }
     .panel-content { max-width: 1120px; margin: 0 auto; }
     .panel-content h1 { font-family: 'Jost', sans-serif; font-size: clamp(0.8rem, 2vw, 1.75rem); font-weight: 100; letter-spacing: 0.18em; margin-bottom: clamp(0.8rem, 2vh, 1.5rem); line-height: 1.15; text-transform: uppercase; color: rgba(255,255,255,0.72); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-    .panel-content h2 { font-family: 'Jost', sans-serif; font-size: clamp(0.95rem, 2vw, 1.6rem); font-weight: 400; letter-spacing: 0.12em; margin: clamp(1rem, 3vh, 2rem) 0 clamp(0.5rem, 1.5vh, 1rem); text-transform: uppercase; }
-    .panel-content h3 { font-family: 'Jost', sans-serif; font-size: clamp(0.85rem, 1.6vw, 1.25rem); font-weight: 400; letter-spacing: 0.1em; margin: clamp(0.8rem, 2vh, 1.5rem) 0 clamp(0.4rem, 1vh, 0.8rem); text-transform: uppercase; }
+    .panel-content h2 { font-family: 'Jost', sans-serif; font-size: clamp(0.95rem, 2vw, 1.6rem); font-weight: 400; letter-spacing: 0.12em; margin: clamp(1rem, 3vh, 2rem) 0 clamp(0.5rem, 1.5vh, 1rem); text-transform: uppercase; color: rgba(255,255,255,0.72); }
+    .panel-content h3 { font-family: 'Jost', sans-serif; font-size: clamp(0.85rem, 1.6vw, 1.25rem); font-weight: 400; letter-spacing: 0.1em; margin: clamp(0.8rem, 2vh, 1.5rem) 0 clamp(0.4rem, 1vh, 0.8rem); text-transform: uppercase; color: rgba(255,255,255,0.72); }
     .panel-content p { font-family: 'Jost', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.1rem); font-weight: 300; line-height: 1.9; letter-spacing: 0.03em; margin-bottom: clamp(0.6rem, 1.5vh, 1rem); opacity: 0.85; }
     .panel-content ul { list-style: none; padding: 0; margin-bottom: clamp(0.6rem, 1.5vh, 1rem); }
     .panel-content ul li { font-family: 'Jost', sans-serif; font-size: clamp(0.85rem, 1.4vw, 1.1rem); font-weight: 300; line-height: 1.9; letter-spacing: 0.03em; opacity: 0.85; padding-left: 1rem; }
@@ -43,7 +58,10 @@
     .treatment-carousel-track::-webkit-scrollbar { display: none; }
     .treatment-carousel-slide { flex: 0 0 100%; width: 100%; scroll-snap-align: start; background: #000; }
     .treatment-carousel-slide img { display: block; width: 100%; height: clamp(320px, 62vw, 620px); object-fit: cover; object-position: center; background: #000; }
-    @media (min-width: 900px) { .top { padding-top: clamp(0.9rem, 3.6vh, 2.5rem); } nav { padding: clamp(0.65rem, 2vh, 1.35rem) clamp(1.2rem, 5vw, 5rem) clamp(0.45rem, 1.1vh, 0.8rem); } .treatment-carousel-slide img { object-fit: contain; } }
+    @media (max-width: 768px) {
+      .dropdown { padding-left: 0.8rem; }
+    }
+    @media (min-width: 900px) { .top { padding-top: clamp(0.9rem, 3.6vh, 2.5rem); } nav { padding: clamp(0.65rem, 2vh, 1.35rem) clamp(1.2rem, 5vw, 5rem) clamp(2rem, 4vh, 3rem); } .treatment-carousel-slide img { object-fit: contain; } }
     .treatment-carousel-dots { display: flex; align-items: center; justify-content: center; gap: 0.55rem; margin-top: clamp(0.9rem, 2vh, 1.2rem); }
     .treatment-carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.28); transition: background 0.2s ease, transform 0.2s ease; }
     .treatment-carousel-dot.active { background: #fff; transform: scale(1.15); }
@@ -55,23 +73,55 @@
       font-weight: 100;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.75);
+      color: #fff;
       text-decoration: none;
       transition: color 0.25s;
     }
-    .request-btn:hover { color: #fff; }  </style>
+    .request-btn:hover { color: #fff; }  
+        .home-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: clamp(5.5rem, 10vh, 7.5rem);
+      background: #000;
+      display: flex;
+      align-items: center;
+      padding: 0 clamp(1.2rem, 3vw, 2.5rem);
+      z-index: 100;
+    }
+    .home-btn {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(0.75rem, 1.4vw, 1.05rem);
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      transition: opacity 0.25s ease;
+    }
+    .home-btn:hover { opacity: 0.55; }
+      @media (max-width: 768px) { .logo-img { width: 145px; } }
+    .site-header { position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 50; background: #000; }
+    @media (min-width: 900px) and (max-width: 1920px) {
+      .top { padding-top: clamp(0.4rem, 1.5vh, 1rem); }
+      .logo-img { width: clamp(100px, 16vw, 195px); }
+      nav { padding: clamp(0.3rem, 0.8vh, 0.65rem) clamp(1.2rem, 5vw, 5rem) clamp(0.8rem, 2vh, 1.5rem); }
+    }    .treatment-title-block { position: sticky; top: var(--header-h, 0px); background: #000; z-index: 40; padding-bottom: clamp(0.8rem, 2vh, 1.5rem); }
+    .treatment-title-block::before { content: ''; position: absolute; top: calc(-1 * clamp(1.5rem, 5vw, 4rem)); left: -100vw; right: -100vw; bottom: 0; background: #000; z-index: -1; }
+    .treatment-title-block h1 { margin-bottom: 0.3rem; }
+  </style>
 </head>
 <body>
 <div class="wrapper">
+  <div class="site-header">
   <div class="top">
-    <a href="index.html" aria-label="01 Dental Clinic home">
-      <img class="logo-img" src="Untitled design (20).png" alt="01 Dental Clinic" />
-    </a>
+    <img class="logo-img" src="logo.jpg" alt="OI Dental Clinic" />
   </div>
   <nav>
     <div class="nav-item"><a href="about.html">ABOUT</a></div>
     <div class="nav-item">
-      <button class="nav-trigger active" id="nav-treatments" onclick="toggleDropdown()">TREATMENTS</button>
+      <a href="index.html?back=treatments" class="nav-trigger active" id="nav-treatments">TREATMENTS</a>
       <div class="dropdown" id="treatments-dropdown">
         <a href="invisalign.html">INVISALIGN ALIGN</a>
         <a href="opseis-porselanis.html" class="active">LUMINEERS VENEERS</a>
@@ -85,14 +135,15 @@
         <a href="stomatiki-xeirourgiki.html">ORAL SURGERY</a>
       </div>
     </div>
+    <div class="nav-item"><a href="index.html?back=cases" class="nav-trigger">CASES</a></div>
     <div class="nav-item"><a href="contact.html">CONTACT</a></div>
-    <div class="nav-item"><a href="cases.html">CASES</a></div>
     <div class="nav-item"><a href="request.html">REQUEST</a></div>
   </nav>
+  </div>
   <main class="page-content">
     <div class="panel-content">
 <h1>Οψεις Πορσελανης – Lumineers®</h1>
-        <p><em>Ψηφιακός σχεδιασμός χαμόγελου για φυσικό και αρμονικό αισθητικό αποτέλεσμα</em></p>
+        <p>Ψηφιακός σχεδιασμός χαμόγελου για φυσικό και αρμονικό αισθητικό αποτέλεσμα</p>
         <div class="panel-divider"></div>
         <p>Οι όψεις πορσελάνης είναι λεπτές κεραμικές αποκαταστάσεις που σχεδιάζονται και κατασκευάζονται με τη βοήθεια σύγχρονης ψηφιακής τεχνολογίας. Τοποθετούνται στην εξωτερική επιφάνεια των δοντιών με στόχο τη βελτίωση της αισθητικής του χαμόγελου και την επίτευξη ενός φυσικού και ισορροπημένου αποτελέσματος.</p>
         <p>Ο σχεδιασμός της θεραπείας πραγματοποιείται με τη χρήση Digital Smile Design, ώστε το τελικό αποτέλεσμα να προσαρμόζεται στα χαρακτηριστικά του προσώπου και στο χαμόγελο κάθε ασθενή.</p>
@@ -168,6 +219,24 @@
   }
   initTreatmentCarousels();
 </script>
+<div class="home-bar"><a href="index.html?back=treatments" class="home-btn">&lt; OI</a></div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var header = document.querySelector('.site-header');
+    var wrapper = document.querySelector('.wrapper');
+    function syncOffset() { var h = Math.ceil(header.getBoundingClientRect().height); wrapper.style.paddingTop = h + 'px'; document.documentElement.style.setProperty('--header-h', h + 'px'); }
+    var h1 = document.querySelector('.panel-content > h1');
+    if (h1) {
+      var block = document.createElement('div');
+      block.className = 'treatment-title-block';
+      h1.parentNode.insertBefore(block, h1);
+      block.appendChild(h1);
+      var next = block.nextSibling;
+      while (next && next.nodeType === 3) { next = next.nextSibling; }
+      if (next && next.tagName === 'P') { block.appendChild(next); }
+    }
+    syncOffset();
+    window.addEventListener('resize', syncOffset);
+  });
+</script>
 </body>
-</html>
-

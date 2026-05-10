@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="el">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>01 Dental Clinic</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+  <title>OI Dental Clinic</title>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,9 +42,12 @@
     }
 
     .logo-img {
-      width: clamp(115px, 22vw, 250px);
+      width: clamp(200px, 28vw, 340px);
       height: auto;
       display: block;
+      transform: scale(2.08);
+      transform-origin: center center;
+      mix-blend-mode: lighten;
     }
 
     .buttons {
@@ -55,26 +60,21 @@
     .card-btn {
       display: block;
       font-family: var(--font);
-      font-size: clamp(0.7rem, 2vw, 0.95rem);
-      font-weight: 100;
-      letter-spacing: 0.28em;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 300;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.72);
       text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.3);
-      padding-bottom: 0.4em;
-      transition: color 0.25s ease, border-color 0.25s ease;
+      transition: opacity 0.25s ease;
     }
-    .card-btn:hover {
-      color: #fff;
-      border-color: rgba(255,255,255,0.75);
-    }
+    .card-btn:hover { opacity: 0.75; }
   </style>
 </head>
 <body>
 
 <div class="wrapper">
-  <img class="logo-img" src="Untitled design (20).png" alt="01 Dental Clinic" />
+  <img class="logo-img" src="logo.jpg" alt="OI Dental Clinic" />
   <div class="buttons">
     <a href="request.html" class="card-btn">REQUEST APPOINTMENT</a>
     <a href="contact.html" class="card-btn">CONTACT</a>

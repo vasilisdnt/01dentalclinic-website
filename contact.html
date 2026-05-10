@@ -3,8 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | 01 Dental Clinic</title>
-  <meta name="description" content="Επικοινωνήστε με το 01 Dental Clinic για πληροφορίες, αξιολόγηση και προγραμματισμό της επίσκεψής σας." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+  <title>Contact | OI Dental Clinic</title>
+  <meta name="description" content="Επικοινωνήστε με το OI Dental Clinic για πληροφορίες, αξιολόγηση και προγραμματισμό της επίσκεψής σας." />
+  <link rel="canonical" href="https://www.01dentalclinic.gr/contact.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="OI Dental Clinic" />
+  <meta property="og:locale" content="el_GR" />
+  <meta property="og:url" content="https://www.01dentalclinic.gr/contact.html" />
+  <meta property="og:title" content="Contact | OI Dental Clinic" />
+  <meta property="og:description" content="Επικοινωνήστε με το OI Dental Clinic για πληροφορίες, αξιολόγηση και προγραμματισμό της επίσκεψής σας." />
+  <meta property="og:image" content="https://www.01dentalclinic.gr/logo.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact | OI Dental Clinic" />
+  <meta name="twitter:description" content="Επικοινωνήστε με το OI Dental Clinic για πληροφορίες, αξιολόγηση και προγραμματισμό της επίσκεψής σας." />
+  <meta name="twitter:image" content="https://www.01dentalclinic.gr/logo.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400&family=Josefin+Sans:wght@100;300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,13 +35,13 @@
       color: var(--text);
       font-family: var(--font);
     }
-    body { overflow-x: hidden; }
+    body { overflow-x: clip; }
     .wrapper {
       min-height: 100vh;
       min-height: 100svh;
       display: flex;
       flex-direction: column;
-      background: #000;
+      background: #000; padding-bottom: clamp(5.5rem, 10vh, 7.5rem);
     }
     .top {
       z-index: 10;
@@ -36,24 +50,27 @@
       align-items: center;
       padding-top: clamp(2rem, 7vh, 5rem);
       background: var(--bg);
-    }
+      overflow: hidden;    }
     .logo-img {
       width: clamp(115px, 22vw, 250px);
       height: auto;
       display: block;
+      transform: scale(2.08);
+      transform-origin: center center;
+      mix-blend-mode: lighten;
     }
     nav {
       z-index: 20;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding: clamp(1.2rem, 4vh, 3rem) clamp(1.2rem, 5vw, 5rem) clamp(0.8rem, 2vh, 1.5rem);
+      padding: clamp(1.2rem, 4vh, 3rem) clamp(1.2rem, 5vw, 5rem) clamp(2rem, 4vh, 3rem);
       background: var(--bg);
       position: relative;
     }
     .nav-item { position: relative; }
     nav a, .nav-trigger {
-      color: rgba(255,255,255,0.58);
+      color: #fff;
       text-decoration: none;
       font-family: var(--font);
       font-size: clamp(0.6rem, 1.2vw, 1rem);
@@ -68,7 +85,7 @@
       display: block;
     }
     nav a:hover, .nav-trigger:hover { color: rgba(255,255,255,0.82); opacity: 1; }
-    nav a.active, .nav-trigger.active { color: #fff; opacity: 1; }
+    nav a.active, .nav-trigger.active { color: #fff; opacity: 1; text-shadow: 0 0 8px rgba(255,255,255,0.85), 0 0 20px rgba(255,255,255,0.4); }
     .dropdown {
       position: absolute;
       top: calc(100% + 0.8rem);
@@ -78,31 +95,47 @@
       gap: clamp(0.5rem, 1.5vh, 1rem);
       z-index: 30;
       background: var(--bg);
-      padding: 0.5rem 0;
+      padding: 0.5rem 0.8rem;
     }
     .dropdown.open { display: flex; }
     .dropdown a {
       font-size: clamp(0.55rem, 1.1vw, 0.9rem);
       letter-spacing: 0.12em;
       white-space: nowrap;
-      opacity: 0.7;
+      color: #fff;
+      opacity: 1;
     }
+    .dropdown a:hover { color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.85), 0 0 20px rgba(255,255,255,0.4); }
+    .dropdown a.active { color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.85), 0 0 20px rgba(255,255,255,0.4); }
     .page-content {
       flex: 1;
       padding: clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
       background: #000;
+     
     }
     .panel-content {
       max-width: 1120px;
       margin: 0 auto;
     }
     .contact-content { max-width: 600px; }
-    .panel-content h1 {
-      font-family: 'Jost', sans-serif;
-      font-size: clamp(0.8rem, 2vw, 1.75rem);
+    .panel-content .doctor-info {
+      font-family: var(--font);
+      font-size: clamp(0.88rem, 2vw, 1.58rem);
       font-weight: 300;
-      letter-spacing: 0.08em;
-      margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff !important;
+      opacity: 1 !important;
+      line-height: 1.3;
+      margin-bottom: 0.15rem;
+      white-space: normal;
+    }
+    .panel-content h1 {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(0.71rem, 1.65vw, 1.31rem);
+      font-weight: 100;
+      letter-spacing: 0.18em;
+      margin-bottom: 1.5rem;
       line-height: 1.15;
       text-transform: uppercase;
     }
@@ -117,35 +150,34 @@
       margin: clamp(1rem, 3vh, 2rem) 0 clamp(0.5rem, 1.5vh, 1rem);
     }
     .panel-content h3 {
-      font-size: clamp(0.85rem, 1.6vw, 1.25rem);
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      margin: clamp(0.8rem, 2vh, 1.5rem) 0 clamp(0.4rem, 1vh, 0.8rem);
+      font-size: 0.92rem;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      margin: 1.8rem 0 0.5rem;
     }
     .map-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4em;
+      display: block;
       font-family: 'Jost', sans-serif;
-      font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+      font-size: 0.92rem;
       font-weight: 300;
-      color: rgba(255,255,255,0.85);
+      color: #fff;
       text-decoration: none;
-      letter-spacing: 0.03em;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      padding-bottom: 0.1em;
-      transition: color 0.2s, border-color 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1.8;
       margin-bottom: clamp(0.6rem, 1.5vh, 1rem);
+      transition: opacity 0.3s ease;
+      word-break: break-word;
     }
-    .map-link:hover { color: #fff; border-color: rgba(255,255,255,0.6); }
+    .map-link:hover { opacity: 0.7; }
     .panel-content p {
       font-family: 'Jost', sans-serif;
-      font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+      font-size: 0.9rem;
       font-weight: 300;
       line-height: 1.9;
       letter-spacing: 0.03em;
-      margin-bottom: clamp(0.6rem, 1.5vh, 1rem);
-      opacity: 0.85;
+      margin-bottom: 0.5rem;
+      opacity: 0.65;
     }
     .panel-divider {
       width: 30px;
@@ -153,6 +185,24 @@
       background: rgba(255,255,255,0.25);
       margin: clamp(1rem, 3vh, 2rem) 0;
     }
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: clamp(0.2rem, 0.8vh, 0.6rem);
+    }
+    .social-link {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+    .social-link:hover { opacity: 1; color: #fff; }
+    .contact-link { color: inherit; text-decoration: none; transition: opacity 0.2s ease; }
+    .contact-link:hover { opacity: 0.6; }
     .bottom-bar {
       z-index: 10;
       background: var(--bg);
@@ -172,18 +222,54 @@
       transition: color 0.25s ease, opacity 0.25s ease;
     }
     .ask-btn:hover { color: rgba(255,255,255,0.82); opacity: 1; }
+    @media (max-width: 768px) {
+      .dropdown { padding-left: 0.8rem; }
+    }
     @media (min-width: 900px) {
       .top { padding-top: clamp(0.9rem, 3.6vh, 2.5rem); }
-      nav { padding: clamp(0.65rem, 2vh, 1.35rem) clamp(1.2rem, 5vw, 5rem) clamp(0.45rem, 1.1vh, 0.8rem); }
+      nav { padding: clamp(0.65rem, 2vh, 1.35rem) clamp(1.2rem, 5vw, 5rem) clamp(2rem, 4vh, 3rem); }
     }
-  </style>
+  
+        .home-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: clamp(5.5rem, 10vh, 7.5rem);
+      background: #000;
+      display: flex;
+      align-items: center;
+      padding: 0 clamp(1.2rem, 3vw, 2.5rem);
+      z-index: 100;
+    }
+    .home-btn {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(0.75rem, 1.4vw, 1.05rem);
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      transition: opacity 0.25s ease;
+    }
+    .home-btn:hover { opacity: 0.55; }
+      @media (max-width: 768px) { .logo-img { width: 145px; } }
+    .site-header { position: sticky; top: 0; left: 0; right: 0; width: 100%; z-index: 50; background: #000; }
+    @media (min-width: 900px) and (max-width: 1920px) {
+      .top { padding-top: clamp(0.4rem, 1.5vh, 1rem); }
+      .logo-img { width: clamp(100px, 16vw, 195px); }
+      nav { padding: clamp(0.3rem, 0.8vh, 0.65rem) clamp(1.2rem, 5vw, 5rem) clamp(0.8rem, 2vh, 1.5rem); }
+    }
+    .treatment-title-block { position: sticky; top: var(--header-h, 0px); background: #000; z-index: 40; padding-bottom: clamp(0.8rem, 2vh, 1.5rem); }
+    .treatment-title-block::before { content: ''; position: absolute; top: calc(-1 * clamp(1.5rem, 5vw, 4rem)); left: -100vw; right: -100vw; bottom: 0; background: #000; z-index: -1; }
+    .treatment-title-block h1 { margin-bottom: 0; }
+    </style>
 </head>
 <body>
 <div class="wrapper">
+  <div class="site-header">
   <div class="top">
-    <a href="index.html" aria-label="01 Dental Clinic home">
-      <img class="logo-img" src="Untitled design (20).png" alt="01 Dental Clinic" />
-    </a>
+    <img class="logo-img" src="logo.jpg" alt="OI Dental Clinic" />
   </div>
 
   <nav>
@@ -191,7 +277,7 @@
       <a href="about.html">ABOUT</a>
     </div>
     <div class="nav-item">
-      <button class="nav-trigger" id="nav-treatments" onclick="toggleDropdown()">TREATMENTS</button>
+      <a href="index.html?back=treatments" class="nav-trigger" id="nav-treatments">TREATMENTS</a>
       <div class="dropdown" id="treatments-dropdown">
         <a href="invisalign.html">INVISALIGN ALIGN</a>
         <a href="opseis-porselanis.html">LUMINEERS VENEERS</a>
@@ -206,34 +292,40 @@
       </div>
     </div>
     <div class="nav-item">
-      <a href="contact.html" class="active">CONTACT</a>
+      <a href="index.html?back=cases" class="nav-trigger">CASES</a>
     </div>
     <div class="nav-item">
-      <a href="cases.html">CASES</a>
+      <a href="contact.html" class="active">CONTACT</a>
     </div>
     <div class="nav-item">
       <a href="request.html">REQUEST</a>
     </div>
   </nav>
+  </div>
 
   <main class="page-content">
     <div class="panel-content contact-content">
       <h1>CONTACT</h1>
       <div class="panel-divider"></div>
-      <h2>Dr. Βασιλειος Χατζηπορτοκαλης</h2>
-      <p>DDS · Bioaesthetic Dentistry · Implantology<br>NYU College of Dentistry — New York</p>
+      <p class="doctor-info">DR VASILEIOS CHATZIPORTOKALIS</p>
+      <p class="doctor-info">DDS NYU</p>
       <div class="panel-divider"></div>
-      <h3>Βουλα</h3>
+      <h3>VOULA</h3>
       <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Leof.+Vasileos+Pavlou+6,+Voula+166+73,+Greece" target="_blank" rel="noopener">
-        Λεωφ. Βασιλέως Παύλου 6, Βούλα 166 73 ↗
+        6 VASILEOS PAVLOU
       </a>
-      <h3>Νικαια</h3>
+      <h3>NIKAIA</h3>
       <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Papadiamanti+6,+Nikea+184+52,+Greece" target="_blank" rel="noopener">
-        Παπαδιαμάντη 6, Νίκαια 184 52 ↗
+        6 PAPADIAMANTI
       </a>
       <div class="panel-divider"></div>
-      <p>+30 213 012 2918</p>
-      <p>info@01dentalclinic.gr</p>
+      <p><a href="tel:+302130122918" class="contact-link">+30 213 012 2918</a></p>
+      <p><a href="mailto:info@01dentalclinic.gr" class="contact-link">info@01dentalclinic.gr</a></p>
+      <p><a href="https://www.01dentalclinic.gr" target="_blank" rel="noopener" class="contact-link">01dentalclinic.gr</a></p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/dr.v.chatziportokalis/" target="_blank" rel="noopener" class="social-link">IG</a>
+        <a href="https://www.facebook.com/drchatziportokalis.v" target="_blank" rel="noopener" class="social-link">FB</a>
+      </div>
     </div>
   </main>
 </div>
@@ -250,7 +342,15 @@
       document.getElementById('treatments-dropdown').classList.remove('open');
     }
   });
+  document.addEventListener('DOMContentLoaded', function() {
+    var header = document.querySelector('.site-header');
+    var wrapper = document.querySelector('.wrapper');
+    function syncOffset() { var h = Math.ceil(header.getBoundingClientRect().height); document.documentElement.style.setProperty('--header-h', h + 'px'); }
+    var titleEl = document.querySelector('.panel-content > h1');
+    if (titleEl) { var block = document.createElement('div'); block.className = 'treatment-title-block'; titleEl.parentNode.insertBefore(block, titleEl); block.appendChild(titleEl); }
+    syncOffset();
+    window.addEventListener('resize', syncOffset);
+  });
 </script>
+<div class="home-bar"><a href="index.html?skip=1" class="home-btn">&lt; OI</a></div>
 </body>
-</html>
-
