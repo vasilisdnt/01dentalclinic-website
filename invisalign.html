@@ -247,7 +247,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     var header = document.querySelector('.site-header');
     var wrapper = document.querySelector('.wrapper');
-    function syncOffset() { var h = Math.ceil(header.getBoundingClientRect().height); wrapper.style.paddingTop = h + 'px'; document.documentElement.style.setProperty('--header-h', h + 'px'); }
+    function syncOffset() { var h = Math.ceil(header.getBoundingClientRect().height); document.documentElement.style.setProperty('--header-h', h + 'px'); }
     var h1 = document.querySelector('.panel-content > h1');
     if (h1) {
       var block = document.createElement('div');
