@@ -106,7 +106,7 @@
     }    .treatment-title-block { position: sticky; top: var(--header-h, 0px); background: #000; z-index: 40; padding-bottom: clamp(0.8rem, 2vh, 1.5rem); }
     .treatment-title-block::before { content: ''; position: absolute; top: calc(-1 * clamp(1.5rem, 5vw, 4rem)); left: -100vw; right: -100vw; bottom: 0; background: #000; z-index: -1; }
     .treatment-title-block h1 { margin-bottom: 0.3rem; }
-      .wrapper > * { flex-shrink: 0; }
+      .wrapper { display: block !important; }
     html { background-color: #000; overscroll-behavior: none; }
     .home-bar { will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; z-index: 9999; }
     .home-bar::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 300px; background: #000; }
